@@ -1,32 +1,38 @@
 import { useState, useEffect } from 'react';
 
-import LabelledInput from './labelled-input';
+import NumberInput from './number-input';
 
 const BoxShadow = () => {
   const [horOffset, setHorOffset] = useState(0);
   const [verOffset, setVerOffset] = useState(0);
   const [blurRad, setBlurRad]     = useState(0);
   const [spreadRad, setSpreadRad] = useState(0);
-  const [color, setColor] = useState('rgba(0, 0, 0, 0.4');
+  const [color, setColor] = useState('rgba(0, 0, 0, 0.4)');
   const [inset, setInset] = useState(false);
 
+  let boxShadowStyle = { boxShadow: `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}` };
+
   useEffect(() => {
-    console.log(horOffset, verOffset, blurRad, spreadRad);
+    boxShadowStyle = `${horOffset} ${verOffset} ${blurRad} ${spreadRad} ${color}${inset ? ' inset' : ''}`
+    console.log(horOffset, verOffset, blurRad, spreadRad, inset, boxShadowStyle);
   })
 
   return (
     <div className="box-shadow">
-      <div className="example-div"></div>
+      <div className="example-div" style={boxShadowStyle}></div>
       <div>
-        <LabelledInput label="Horizontal Offset" inputType="number" value={horOffset} setValue={setHorOffset} />
-        <LabelledInput label="Vertical Offset" inputType="number" value={verOffset} setValue={setVerOffset} />
-        <LabelledInput label="Blur Radius" inputType="number" value={blurRad} setValue={setBlurRad} />
-        <LabelledInput label="Spread Radius" inputType="number" value={spreadRad} setValue={setSpreadRad} />
+        <NumberInput label="Horizontal Offset" value={horOffset} setValue={setHorOffset} />
+        <NumberInput label="Vertical Offset" value={verOffset} setValue={setVerOffset} />
+        <NumberInput label="Blur Radius" value={blurRad} setValue={setBlurRad} />
+        <NumberInput label="Spread Radius" value={spreadRad} setValue={setSpreadRad} />
         <label>
           Color
           <input type="text" defaultValue="rgba(0, 0, 0, 0.4)"/>
         </label>
-        <LabelledInput label="Inset" inputType="checkbox" value={inset} onChange={setInset} />
+        <label>
+          Inset
+          <input type="checkbox" checked={inset} onChange={e => setInset(e.target.checked)} />
+        </label>
       </div>
     </div>
   );
