@@ -1,7 +1,8 @@
+import BoxShadow from './box-shadow';
 
 function App() {
   return (
-    <div>Hello World!</div>
+    <BoxShadow />
   );
 }
 
