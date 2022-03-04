@@ -10,16 +10,11 @@ const BoxShadow = () => {
   const [color, setColor] = useState('rgba(0, 0, 0, 0.4)');
   const [inset, setInset] = useState(false);
 
-  let boxShadowStyle = { boxShadow: `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}` };
-
-  useEffect(() => {
-    boxShadowStyle = `${horOffset} ${verOffset} ${blurRad} ${spreadRad} ${color}${inset ? ' inset' : ''}`
-    console.log(horOffset, verOffset, blurRad, spreadRad, inset, boxShadowStyle);
-  })
-
   return (
     <div className="box-shadow">
-      <div className="example-div" style={boxShadowStyle}></div>
+      <div className="example-div" style={{
+        boxShadow: `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}`
+      }}></div>
       <div>
         <NumberInput label="Horizontal Offset" value={horOffset} setValue={setHorOffset} />
         <NumberInput label="Vertical Offset" value={verOffset} setValue={setVerOffset} />
