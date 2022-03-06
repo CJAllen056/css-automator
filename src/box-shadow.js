@@ -14,22 +14,29 @@ const BoxShadow = () => {
   const boxShadowStyle = `${color} ${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px${inset ? ' inset' : ''}`
 
   return (
-    <div className="bs-generator row">
-      <div className="bs-preview-container one-half column">
-        <div className="bs-preview" style={{ boxShadow: boxShadowStyle }}></div>
-      </div>
-      <div className="bs-inputs one-half column">
-        <div className="row">
-          <LabelledInput className="one-half column" label="Horizontal Offset" type="number" value={horOffset} setValue={setHorOffset} />
-          <LabelledInput className="one-half column" label="Vertical Offset" type="number" value={verOffset} setValue={setVerOffset} />
+    <div className="bs-generator">
+      <div className="row">
+        <div className="bs-preview-container one-half column">
+          <div className="bs-preview" style={{ boxShadow: boxShadowStyle }}></div>
         </div>
-        <div className="row">
-          <LabelledInput className="one-half column" label="Blur Radius" type="number" value={blurRad} setValue={setBlurRad} />
-          <LabelledInput className="one-half column" label="Spread Radius" type="number" value={spreadRad} setValue={setSpreadRad} />
+        <div className="bs-inputs one-half column">
+          <div className="row">
+            <LabelledInput className="one-half column" label="Horizontal Offset" type="number" value={horOffset} setValue={setHorOffset} />
+            <LabelledInput className="one-half column" label="Vertical Offset" type="number" value={verOffset} setValue={setVerOffset} />
+          </div>
+          <div className="row">
+            <LabelledInput className="one-half column" label="Blur Radius" type="number" value={blurRad} setValue={setBlurRad} />
+            <LabelledInput className="one-half column" label="Spread Radius" type="number" value={spreadRad} setValue={setSpreadRad} />
+          </div>
+          <ColorPicker color={color} setColor={setColor} />
+          <LabelledInput label="Inset" type="checkbox" setValue={setInset} />
         </div>
-        <ColorPicker color={color} setColor={setColor} />
-        <LabelledInput label="Inset" type="checkbox" setValue={setInset} />
       </div>
+      <pre><code>
+        -webkit-box-shadow: {boxShadowStyle};<br />
+        -moz-box-shadow: {boxShadowStyle};<br />
+        box-shadow: {boxShadowStyle};
+      </code></pre>
     </div>
   );
 }
