@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import NumberInput from './number-input';
+import LabelledInput from './labelled-input';
 
 const BoxShadow = () => {
   const [horOffset, setHorOffset] = useState(0);
@@ -10,24 +10,21 @@ const BoxShadow = () => {
   const [color, setColor] = useState('rgba(0, 0, 0, 0.4)');
   const [inset, setInset] = useState(false);
 
+  let boxShadowStyle = `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}`
+
   return (
     <div className="box-shadow">
-      <div className="example-div" style={{
-        boxShadow: `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}`
-      }}></div>
+      <div className="example-div" style={{ boxShadow: boxShadowStyle }}></div>
       <div>
-        <NumberInput label="Horizontal Offset" value={horOffset} setValue={setHorOffset} />
-        <NumberInput label="Vertical Offset" value={verOffset} setValue={setVerOffset} />
-        <NumberInput label="Blur Radius" value={blurRad} setValue={setBlurRad} />
-        <NumberInput label="Spread Radius" value={spreadRad} setValue={setSpreadRad} />
+        <LabelledInput label="Horizontal Offset" type="number" value={horOffset} setValue={setHorOffset} />
+        <LabelledInput label="Vertical Offset" type="number" value={verOffset} setValue={setVerOffset} />
+        <LabelledInput label="Blur Radius" type="number" value={blurRad} setValue={setBlurRad} />
+        <LabelledInput label="Spread Radius" type="number" value={spreadRad} setValue={setSpreadRad} />
         <label>
           Color
           <input type="text" defaultValue="rgba(0, 0, 0, 0.4)"/>
         </label>
-        <label>
-          Inset
-          <input type="checkbox" checked={inset} onChange={e => setInset(e.target.checked)} />
-        </label>
+        <LabelledInput label="Inset" type="checkbox" setValue={setInset} />
       </div>
     </div>
   );
