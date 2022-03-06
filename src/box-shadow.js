@@ -10,7 +10,7 @@ const BoxShadow = () => {
   const [color, setColor] = useState('rgba(0, 0, 0, 0.4)');
   const [inset, setInset] = useState(false);
 
-  let boxShadowStyle = `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}`
+  const boxShadowStyle = `${horOffset}px ${verOffset}px ${blurRad}px ${spreadRad}px ${color}${inset ? ' inset' : ''}`
 
   return (
     <div className="box-shadow">

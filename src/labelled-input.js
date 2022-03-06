@@ -1,11 +1,12 @@
 const LabelledInput = props => {
+	const { label, type, value, setValue } = props;
 	return (
 		<label>
-			{props.label}
+			{label}
 			<input
-				type={props.type}
-				value={props.value}
-				onChange={e => props.setValue(e.target[props.type === "checkbox" ? "checked" : "value"])}
+				type={type}
+				value={value}
+				onChange={e => setValue(e.target[type === "checkbox" ? "checked" : "value"])}
 			/>
 		</label>
 	)
