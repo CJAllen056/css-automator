@@ -1,8 +1,8 @@
 const LabelledInput = props => {
-	const { label, type, value, setValue } = props;
+	const { className, label, type, value, setValue } = props;
 	return (
-		<label>
-			{label}
+		<label className={className}>
+			{label}<br />
 			<input
 				type={type}
 				value={value}

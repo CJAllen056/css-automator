@@ -4,7 +4,9 @@ import './styles/app.scss';
 
 function App() {
   return (
-    <BoxShadow />
+    <div className="container">
+      <BoxShadow />
+    </div>
   );
 }
 
